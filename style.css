@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Josefin+Sans&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.bg-grey {
+    background-color: #DFF6FF;
+}
+
+.bg-white {
+    background-color: #EEEEEE;
+}
+
+.w-5{
+    width: 5%;
+}
+
+.w-10 {
+    width: 10%;
+}
+
+.w100{
+    width: 300px;
+}
+
+.mt-10 {
+    margin-top: 15%;
+}
+
+.mb-10{
+    margin-bottom: 15%;
+}
+
+.around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.gauge-container>.gauge>.dial {
+    stroke: #334455;
+    stroke-width: 2;
+}
+
+.gauge-container>.gauge>.value {
+    stroke: rgb(47, 227, 255);
+    stroke-width: 2;
+}
+
+.gauge-container>.gauge>.value-text {
+    fill: rgb(47, 227, 255);
+    font-family: sans, 'sans-serif';
+    font-weight: bold;
+    font-size: 0.6em;
+}

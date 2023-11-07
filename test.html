@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Générateur de fichiers JavaScript</title>
+</head>
+<body>
+    <label for="userName">Entrez votre nom :</label>
+    <input type="text" id="userName">
+    <button onclick="generateJSFile()">Générer le fichier JavaScript</button>
+
+    <!-- Ajoutez un élément pre pour afficher le code JavaScript -->
+    <pre id="jsCode"></pre>
+
+    <!-- Ajoutez un élément div pour afficher le compteur de température avec l'ID dynamique -->
+    <div id="gauge" class="gauge-container two w-75"></div>
+
+    <script>
+        function generateJSFile() {
+            // Récupérez le nom de l'utilisateur depuis le champ de texte
+            var userName = document.getElementById("userName").value;
+
+            // Générer le contenu JavaScript avec l'ID dynamique
+            var jsContent = `var gauge2 = gauge(
+                document.getElementById("gauge_${userName}"), // Utilisez l'ID dynamique
+                {
+                    min: -50,
+                    max: 50,
+                    dialStartAngle: 180,
+                    dialEndAngle: 0,
+                    value: 0,
+                    viewBox: "0 0 100 57",
+                    color: function(value) {
+                        if (value >= 20) {
+                            return "#d21404";
+                        } else if (value >= 10) {
+                            return "#03c04a";
+                        } else if (value >= 0) {
+                            return "#82eefd";
+                        } else if (value >= -20) {
+                            return "#0492c2";
+                        } else {
+                            return "#0000ff";
+                        }
+                    }
+                }
+            );`;
+
+            // Affichez le code JavaScript généré dans l'élément pre
+            document.getElementById("jsCode").textContent = jsContent;
+
+            // Créez un objet Blob avec le contenu JavaScript
+            var blob = new Blob([jsContent], { type: "application/javascript" });
+
+            // Créez un objet URL à partir du Blob
+            var url = URL.createObjectURL(blob);
+
+            // Créez un élément de script et attribuez-lui l'URL du fichier
+            var script = document.createElement("script");
+            script.src = url;
+
+            // Remplacez l'ID de l'élément <div> avec l'ID généré dynamiquement
+            document.getElementById("gauge").id = `gauge_${userName}`;
+
+            // Ajoutez le script à la fin du corps de la page
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>
