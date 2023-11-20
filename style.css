@@ -5,11 +5,15 @@ body {
 }
 
 .bg-grey {
-    background-color: #DFF6FF;
+    background-color: #DFF6FF !important;
 }
 
 .bg-white {
-    background-color: #EEEEEE;
+    background-color: #FFFFFF !important;
+}
+
+.bg-whigre{
+    background-color: #FFFFFF !important;
 }
 
 li {
@@ -36,8 +40,16 @@ li {
     width: 15%;
 }
 
+.w75{
+    width: 75%;
+}
+
 .w100{
     width: 300px;
+}
+
+.w100lg{
+    width: 100%;
 }
 
 .mt-10 {
@@ -58,6 +70,11 @@ li {
     height: auto;
 }
 
+.w60 {
+    width: 60px;
+}
+
+
 
 .gauge-container>.gauge>.dial {
     stroke: #334455;
@@ -77,8 +94,38 @@ li {
 }
 
 
-@media screen and (max-width:769px) {
+@media screen and (max-width:992px) {
     .none{
         display: none;
+    }
+    .w100lg{
+        width: 25%;
+    }
+    .m0333 {
+        margin: 0 3rem 3rem 3rem;
+    }
+    .flexres{
+        display: flex;
+        flex-direction: column !important;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer-block {
+        display: flex;
+        flex-direction: column;
+    }
+    .aroundres{
+        display: flex;
+        justify-content: space-around;
+    }
+    .bg-whigre{
+        background-color: #DFF6FF !important;
+    }
+    .w75{
+        width: auto;
+    }
+
+    *, ::after, ::before {
+        max-width: 100vw;
     }
 }
