@@ -65,11 +65,6 @@ li {
     justify-content: space-around;
 }
 
-.vl {
-    border-right: 1px solid grey;
-    height: auto;
-}
-
 .w60 {
     width: 60px;
 }
