@@ -12,7 +12,6 @@ if ($_POST && $_POST["mail"] && $_POST["password"]) { //envoie des données vers
     }
 }
 ?>
-<body>
 <h2>Connectez-vous</h2>
 
 <form class="mx-5" method="POST"> <!-- formulaire d'identification -->
