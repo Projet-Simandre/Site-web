@@ -7,6 +7,7 @@ var request = new XMLHttpRequest();
 // Configurez la requête pour obtenir des données à partir de l'URL spécifié
 request.open("GET", requestURL);
 
+
 // Définissez le type de réponse comme JSON
 request.responseType = "json";
 
@@ -26,33 +27,37 @@ request.onload = function () {
         console.log(lastSet.length);
         // // Obtenez la dernière pièce de données du dernier ensemble
         var lastData_3 = lastSet[0];
-        temperature = lastData_3["temperature"]
+        temperature = lastData_3["temperature"];
         // // Journalisez le dernier ensemble et la dernière donnée dans la console
         temperature = parseInt(temperature);
 
-        humidite = lastData_3["humidite"]
+        humidite = lastData_3["humidite"];
         // // Journalisez le dernier ensemble et la dernière donnée dans la console
         humidite = parseInt(humidite);
 
-        air = lastData_3["qualite"]
+        air = lastData_3["qualite"];
         // // Journalisez le dernier ensemble et la dernière donnée dans la console
         air = parseInt(air);
         // // Sélectionnez tous les éléments avec la classe "value-text"
-        
+        console.log("j'en peut plus");
         // // Mettez à jour le contenu texte de chaque élément avec la propriété 'qualite' de lastData
 
-        for(let i =0; i<lastSet.length;i++) {
+        for (let i = 0; i < 3; i++) {
             var all_esp = lastSet[i]; // Recupère toute le dernier tableau concernant les esp
             temperature = parseInt(all_esp["temperature"]); // t'as capté
             humidite = parseInt(all_esp["humidite"]);
             air = parseInt(all_esp["qualite"]);
 
-            var get_id_temp = "gauge_esp_" + parseInt(i)+"_temp";
+            console.log("j'en peut plus");
+
+            //On nomme les id
+            var get_id_temp = "gauge_esp_" + parseInt(i + 1) + "_temp";
             console.log(get_id_temp); // Ca recrée les ids
-            var get_id_humi = "gauge_esp_" + parseInt(i)+"_hum";
+            var get_id_humi = "gauge_esp_" + parseInt(i + 1) + "_hum";
             console.log(get_id_humi);
-            var get_id_air = "gauge_esp_" + parseInt(i)+"_air";
-            console.log(get_id_air);
+            var get_id_air = "gauge_esp_" + parseInt(i + 1) + "_air";
+
+            let listId = [get_id_temp, get_id_humi, get_id_air];
 
             let sasa = document.getElementById("auto_remplissage");
             let div_row = document.createElement("div");
@@ -66,7 +71,7 @@ request.onload = function () {
             div_col.classList.add("col-lg");
 
             var p = document.createElement("p");
-            p.textContent= "ESP-" + parseInt(i);
+            p.textContent = "ESP-" + parseInt(i + 1);
             div_col.append(p);
 
             var div_flex = document.createElement("div");
@@ -74,24 +79,57 @@ request.onload = function () {
             div_flex.classList.add("d-flex");
             div_flex.classList.add("justify-content-around");
             div_flex.classList.add("flex-wrap");
-             
+
 
             var div_no_cl = document.createElement("div");
             div_flex.append(div_no_cl);
             
-            var div_gauge = document.createElement("div");
-            div_no_cl.append(div_gauge);
-            div_no_cl.classList.add("gauge-container");
-            div_no_cl.classList.add("two");
-            div_no_cl.classList.add("w100");
-            div_no_cl.setAttribute("id", get_id_temp);
             
-            var p2 = document.createElement("p");
-            div_no_cl.append(p2);
-            p2.classList.add("text-center");
-            p2.textContent = "Temperature";
+                typeDonne = ["Température", "Humidité", "Qualité d'air"];
+                
+                var div_gauge = document.createElement("div");
+                div_no_cl.append(div_gauge);
+                div_gauge.classList.add("gauge-container");
+                div_gauge.classList.add("two");
+                div_gauge.classList.add("w100");
+                div_gauge.setAttribute("id", listId[0]);
+
+                
+                var p2 = document.createElement("p");
+                div_no_cl.append(p2);
+                p2.classList.add("text-center");
+                p2.textContent = "Temperature";
+
+                var div_no_cl_2 = document.createElement("div");
+                div_flex.append(div_no_cl_2);
+                var div_gauge_2 = document.createElement("div");
+                div_no_cl_2.append(div_gauge_2);
+                div_gauge_2.classList.add("gauge-container");
+                div_gauge_2.classList.add("two");
+                div_gauge_2.classList.add("w100");
+                div_gauge_2.setAttribute("id", listId[1]);
+                var p3 = document.createElement("p");
+                div_no_cl_2.append(p3);
+                p3.classList.add("text-center");
+                p3.textContent = "humidite";
+
+                var div_no_cl_3 = document.createElement("div");
+                div_flex.append(div_no_cl_3);
+                var div_gauge_3 = document.createElement("div");
+                div_no_cl_3.append(div_gauge_3);
+                div_gauge_3.classList.add("gauge-container");
+                div_gauge_3.classList.add("two");
+                div_gauge_3.classList.add("w100");
+                div_gauge_3.setAttribute("id", listId[2]);
+                var p4 = document.createElement("p");
+                div_no_cl_3.append(p4);
+                p4.classList.add("text-center");
+                p4.textContent = "qualité d'air";
+           
 
 
+
+            console.log("C'est le i", i);
 
             var esp1_temp = Gauge(
                 document.getElementById(get_id_temp),
@@ -175,20 +213,21 @@ request.onload = function () {
                     }
                 }
             );
-
-
-
-        }
-
-        }
-            
-
         
-        // Analysez le contenu de l'élément en un entier et mettez à jour la variable 'n'
 
-        
+
         }
-        // Journalisez la valeur mise à jour de 'n' dans la console
+
+
+    }
+
+
+
+    // Analysez le contenu de l'élément en un entier et mettez à jour la variable 'n'
+
+
+}
+// Journalisez la valeur mise à jour de 'n' dans la console
 
 // Définissez une fonction pour remplir les éléments d'en-tête avec des données du JSON
 
